@@ -1,0 +1,19 @@
+﻿@using CascadingProject.Domain
+
+@if (Hotel != null)
+{
+    <h3>@Hotel.Name - Rooms</h3>
+    @foreach (var room in Hotel.Rooms)
+    {
+        <RoomComponent Room="room" />
+    }
+}
+else
+{
+    <p>Select a hotel to see the details.</p>
+}
+
+@code {
+    [CascadingParameter]
+    public Hotel Hotel { get; set; }
+}

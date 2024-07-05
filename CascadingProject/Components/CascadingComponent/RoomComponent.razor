@@ -1,0 +1,9 @@
+﻿@using CascadingProject.Domain
+
+<p>Room Number: @Room.Number</p>
+<p>Room Type: @Room.Type</p>
+
+@code {
+    [Parameter]
+    public Room Room { get; set; }
+}

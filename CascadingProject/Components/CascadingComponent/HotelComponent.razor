@@ -1,0 +1,27 @@
+﻿@page "/hotels"
+@using CascadingProject.Domain
+
+<h3>Hotels</h3>
+
+@foreach (var hotel in Hotels)
+{
+    <p @onclick="() => SelectHotel(hotel)">@hotel.Name</p>
+}
+
+<CascadingValue Value="SelectedHotel">
+    <HotelDetailComponent />
+</CascadingValue>
+
+@code {
+    private Hotel SelectedHotel { get; set; }
+    private List<Hotel> Hotels { get; set; } = new List<Hotel>
+    {
+        new Hotel { Name = "Hotel A", Rooms = new List<Room> { new Room { Number = 101, Type = "Single" }, new Room { Number = 102, Type = "Double" } } },
+        new Hotel { Name = "Hotel B", Rooms = new List<Room> { new Room { Number = 201, Type = "Single" }, new Room { Number = 202, Type = "Double" } } }
+    };
+
+    private void SelectHotel(Hotel hotel)
+    {
+        SelectedHotel = hotel;
+    }
+}
